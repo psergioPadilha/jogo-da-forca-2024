@@ -9,34 +9,16 @@
         {
             while (true)
             {
-                //CriarImagemInicial();
-                //Console.WriteLine();
-                //CriarSegundaImagem();
-                //Console.WriteLine();
-                //CriarTerceiraImagem();
-                //Console.WriteLine();
-                //CriarQuartaImagem();
-                //Console.WriteLine();
-                //CriarQuintaImagem();
-                //Console.WriteLine();
-
                 palavrasChaves = CarregarPalavrasChaves();
 
                 string palavraSorteada = SortearPalavra();
 
-                //EntradaDoJogador(palavraSorteada);
-
                 CriarImagemInicial();
-                //Console.WriteLine(palavraSorteada);
-                //Console.WriteLine();
-                //Console.Write("Qual o seu palpite: ");
-                //char palpite = char.Parse(Console.ReadLine().ToUpper());
+
                 char palpite;
-                //int caracter = 0;
+
                 int posicaoDoCaracter = 0;
                 bool caracterEncontrado = false;
-                //int posicao = 0;
-                
 
                 Console.WriteLine(palavraSorteada);
                 char[] caracteresEncontrados = new char[palavraSorteada.Length];
