@@ -12,46 +12,46 @@ Desenvolvido durante o curso Fullstack da [Academia do Programador](https://www.
 ---
 ## Detalhes
 
-O computador escolher·, de maneira aleatÛria, uma palavra entre v·rias possibilidades*, e o jogador deve chutar, letra por letra, atÈ adivinh·-la.
+O computador escolher√°, de maneira aleat√≥ria, uma palavra entre v√°rias possibilidades*, e o jogador deve chutar, letra por letra, at√© adivinh√°-la.
 
 Se o jogador chutar 5 letras erradas, ele perde.
 
 ---
 ## Entrada
 
-Os jogadores s„o solicitados a inserir uma letra por vez atravÈs do console. Se a letra estiver presente na palavra, ela ser· revelada nas posiÁıes correspondentes. Se a letra n„o estiver presente na palavra, uma parte do boneco da forca ser· desenhada.
+Os jogadores s√£o solicitados a inserir uma letra por vez atrav√©s do console. Se a letra estiver presente na palavra, ela ser√° revelada nas posi√ß√µes correspondentes. Se a letra n√£o estiver presente na palavra, uma parte do boneco da forca ser√° desenhada.
 
 ---
 ## Funcionalidades
 
-- __Escolha de Palavra Secreta__: Uma palavra È escolhida aleatoriamente no inÌcio de cada jogo.
-- __RepresentaÁ„o da Forca__: A forca È desenhada progressivamente no console, com cada erro do jogador.
-- __Feedback Visual__: As letras corretamente adivinhadas s„o exibidas na posiÁ„o correta, enquanto as n„o descobertas permanecem ocultas.
-- __Contagem de Erros__: O jogo acompanha o n˙mero de erros cometidos pelo jogador e termina quando o m·ximo permitido È alcanÁado.
+- __Escolha de Palavra Secreta__: Uma palavra √© escolhida aleatoriamente no in√≠cio de cada jogo.
+- __Representa√ß√£o da Forca__: A forca √© desenhada progressivamente no console, com cada erro do jogador.
+- __Feedback Visual__: As letras corretamente adivinhadas s√£o exibidas na posi√ß√£o correta, enquanto as n√£o descobertas permanecem ocultas.
+- __Contagem de Erros__: O jogo acompanha o n√∫mero de erros cometidos pelo jogador e termina quando o m√°ximo permitido √© alcan√ßado.
 
 ---
 ## Requisitos
 
-- .NET SDK (recomendado .NET 8.0 ou superior) para compilaÁ„o e execuÁ„o do projeto.
+- .NET SDK (recomendado .NET 8.0 ou superior) para compila√ß√£o e execu√ß√£o do projeto.
 ---
 ## Como Usar
 
-#### Clone o RepositÛrio
+#### Clone o Reposit√≥rio
 ```
-git clone https://github.com/academia-do-programador/jogo-da-forca-2024.git
+git clone https://github.com/psergioPadilha/jogo-da-forca-2024.git
 ```
 
-#### Navegue atÈ a pasta raiz da soluÁ„o
+#### Navegue at√© a pasta raiz da solu√ß√£o
 ```
 cd jogo-da-forca-2024
 ```
 
-#### Restaure as dependÍncias
+#### Restaure as depend√™ncias
 ```
 dotnet restore
 ```
 
-#### Navegue atÈ a pasta do projeto
+#### Navegue at√© a pasta do projeto
 ```
 cd JogoDaForca.ConsoleApp
 ```
