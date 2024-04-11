@@ -3,7 +3,8 @@
     internal class Program
     {
         static string[] palavrasChaves = new string[30];
-        static int chanceDesperdicada = 0;
+        public static int chanceDesperdicada = 0;
+        public static ChanceDesperdicada chance = new ChanceDesperdicada();
 
         static void Main(string[] args)
         {
@@ -22,7 +23,9 @@
 
                 PreenchaerCaracteresEncontrados(caracteresEncontrados);
 
-                CriarImagemInicial();
+                Imagens imagens = new Imagens();
+
+                imagens.CriarImagemInicial();
 
                 palpite = LerEntradaDoUsuario(caracteresEncontrados);
 
@@ -31,14 +34,16 @@
         }
 
         #region Jogo
-        private static void Jogar(string palavraSorteada, char[] caracteresEncontrados, ref char palpite, ref int controleDeAcertos, ref bool caracterEncontrado)
+        private static void Jogar(string palavraSorteada, char[] caracteresEncontrados, ref char palpite, ref int controleDeAcertos,
+            ref bool caracterEncontrado)
         {
             while ((chanceDesperdicada < 4) && (controleDeAcertos < palavraSorteada.Length))
             {
                 controleDeAcertos = VerificarSePalpiteJaFoiEncontrado(caracteresEncontrados, palpite, controleDeAcertos);
                 VerificarSePalpiteEstaEntreAsLetrasDaPalavraSecreta(palavraSorteada, caracteresEncontrados, palpite, ref controleDeAcertos,
                     ref caracterEncontrado);
-                VerificarChancesDesperdicadas(caracterEncontrado);
+                
+                chanceDesperdicada = chance.VerificarChancesDesperdicadas(caracterEncontrado, chanceDesperdicada);
                 MensagemDeAcertoDaPalavraSecreta(caracteresEncontrados, controleDeAcertos);
                 MensagemDeErroDaPalavraSecreta(palavraSorteada, caracteresEncontrados, ref palpite, controleDeAcertos, ref caracterEncontrado);
             }
@@ -46,7 +51,8 @@
         #endregion
 
         #region Mensagem de erro da palavra secreta
-        private static void MensagemDeErroDaPalavraSecreta(string palavraSorteada, char[] caracteresEncontrados, ref char palpite, int controleDeAcertos, ref bool caracterEncontrado)
+        private static void MensagemDeErroDaPalavraSecreta(string palavraSorteada, char[] caracteresEncontrados, ref char palpite,
+            int controleDeAcertos, ref bool caracterEncontrado)
         {
             if ((chanceDesperdicada != 4) && (controleDeAcertos < palavraSorteada.Length))
             {
@@ -70,24 +76,25 @@
         #region Verifica as chances desperdiçadas
         private static void VerificarChancesDesperdicadas(bool caracterEncontrado)
         {
+            Imagens imagens = new Imagens();
             if (caracterEncontrado == true)
             {
                 switch (chanceDesperdicada)
                 {
                     case 0:
-                        CriarImagemInicial();
+                        imagens.CriarImagemInicial();
                         break;
                     case 1:
-                        CriarSegundaImagem();
+                        imagens.CriarSegundaImagem();
                         break;
                     case 2:
-                        CriarTerceiraImagem();
+                        imagens.CriarTerceiraImagem();
                         break;
                     case 3:
-                        CriarQuartaImagem();
+                        imagens.CriarQuartaImagem();
                         break;
                     case 4:
-                        CriarQuintaImagem();
+                        imagens.CriarQuintaImagem();
                         break;
                 }
             }
@@ -97,16 +104,16 @@
                 switch (chanceDesperdicada)
                 {
                     case 1:
-                        CriarSegundaImagem();
+                        imagens.CriarSegundaImagem();
                         break;
                     case 2:
-                        CriarTerceiraImagem();
+                        imagens.CriarTerceiraImagem();
                         break;
                     case 3:
-                        CriarQuartaImagem();
+                        imagens.CriarQuartaImagem();
                         break;
                     case 4:
-                        CriarQuintaImagem();
+                        imagens.CriarQuintaImagem();
                         Console.Write("GAME OVER!!!");
                         Console.ReadLine();
                         break;
@@ -116,7 +123,8 @@
         #endregion
 
         #region Verifica se o palpite feito pelo usuário está entre as letras da palavra secreta
-        private static void VerificarSePalpiteEstaEntreAsLetrasDaPalavraSecreta(string palavraSorteada, char[] caracteresEncontrados, char palpite, ref int controleDeAcertos, ref bool caracterEncontrado)
+        private static void VerificarSePalpiteEstaEntreAsLetrasDaPalavraSecreta(string palavraSorteada, char[] caracteresEncontrados, 
+            char palpite, ref int controleDeAcertos, ref bool caracterEncontrado)
         {
             for (int i = 0; i < palavraSorteada.Length; i++)
             {
@@ -184,96 +192,6 @@
                 "JENIPAPO;MAÇÃ;MANGABA;MANGA;MARACUJÁ;MURICI;PEQUI;PITANGA;PITAYA;SAPOTI;TANGERINA;UMBU;UVA;UVAIA";
             palavrasChaves = palavra.Split(';');
             return palavrasChaves;
-        }
-        #endregion
-
-        #region Cria a imagem inicial
-        static void CriarImagemInicial()
-        {
-            Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine(" ___________");
-            Console.WriteLine(" |  /      |");
-            Console.WriteLine(" | /");
-            Console.WriteLine(" |/");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine("_|____");
-            Console.WriteLine();
-        }
-        #endregion
-
-        #region Cria a imagem com a cabeça
-        static void CriarSegundaImagem()
-        {
-            Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine(" ___________");
-            Console.WriteLine(" |  /      |");
-            Console.WriteLine(" | /       0");
-            Console.WriteLine(" |/");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine("_|____");
-            Console.WriteLine();
-        }
-        #endregion
-
-        #region Cria a imagem com a cabeça e o corpo
-        static void CriarTerceiraImagem()
-        {
-            Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine(" ___________");
-            Console.WriteLine(" |  /      |");
-            Console.WriteLine(" | /       0");
-            Console.WriteLine(" |/        X");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine("_|____");
-            Console.WriteLine();
-        }
-        #endregion
-
-        #region Cria a imagem com a cabeça, o corpo e os braços
-        static void CriarQuartaImagem()
-        {
-            Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine(" ___________");
-            Console.WriteLine(" |  /      |");
-            Console.WriteLine(" | /       0");
-            Console.WriteLine(" |/       /X\\");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine("_|____");
-            Console.WriteLine();
-        }
-        #endregion
-
-        #region Cria a imagem com a cabeça, o corpo, os braços e as pernas
-        static void CriarQuintaImagem()
-        {
-            Console.Clear();
-            Console.WriteLine();
-            Console.WriteLine(" ___________");
-            Console.WriteLine(" |  /      |");
-            Console.WriteLine(" | /       0");
-            Console.WriteLine(" |/       /X\\");
-            Console.WriteLine(" |        / \\");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine(" |");
-            Console.WriteLine("_|____");
-            Console.WriteLine();
         }
         #endregion
     }
